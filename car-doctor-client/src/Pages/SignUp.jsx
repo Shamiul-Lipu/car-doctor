@@ -2,10 +2,11 @@ import { Link } from 'react-router-dom';
 import img from '../assets/images/login/login.svg'
 import { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
+import { updateProfile } from 'firebase/auth';
 
 
 const SignUp = () => {
-    const { createUser } = useContext(AuthContext)
+    const { createUser, auth } = useContext(AuthContext)
 
     const handleSignUp = event => {
         event.preventDefault();
@@ -18,6 +19,9 @@ const SignUp = () => {
         createUser(email, password)
             .then(result => {
                 const user = result.user;
+                updateProfile(auth.currentUser, {
+                    displayName: name,
+                })
                 console.log(user)
             })
             .catch(error => console.log(error))
