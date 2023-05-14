@@ -3,6 +3,7 @@ import img from '../assets/images/login/login.svg'
 import { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
+import SocialLogin from './SocialLogin';
 
 
 const SignUp = () => {
@@ -64,6 +65,7 @@ const SignUp = () => {
                             </div>
                         </form>
                         <p className='my-4 text-center'>Already Have an Account? <Link className='text-orange-600 font-bold' to="/login">Login</Link> </p>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
